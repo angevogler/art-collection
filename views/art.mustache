@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Art Collections</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Art Collections Database</h1>
+      <form method="post" action="/search">
+        <input type="text" name="search_artist" placeholder="Search Artists">
+        <input type="submit" value="Search">
+      </form>
+    </header>
+
+    <section>
+      {{ #art }}
+      <h1>All Artwork</h1>
+      <div>
+        <img src='{{ imageSource }}'>
+        <p>{{ imageSource }}</p>
+        {{ #artPiece }}
+        <h4>{{ pieceName }}, ({{ pieceDate }})
+        {{ /artPiece }}
+        <h4>{{ artistName }}</h4>
+        <h4>Collection: {{ artCollection }}<h4>
+      {{ /art }}
+    </section>
+
+    <section>
+      <h2>Add New Piece of Art</h2>
+      <form method="post" action="/new-artwork">
+        <input type="text" name="imageSource" placeholder="Artwork URL" required>
+        <input type="text" name="artistName" placeholder="Artist" required>
+        <input type="text" name="pieceName" placeholder="Artwork Name" required>
+        <input type="text" name="pieceDate" placeholder="Artwork Date" required>
+        <input type="text" name="artCollection" placeholder="Collection">
+        <input type="submit" value="Submit Artwork">
+      </form>
+    </section>
+  </body>
+</html>
